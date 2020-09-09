@@ -20,5 +20,5 @@ body,html{
     background:url('/assets/images/login_title.png') no-repeat center;
 }
 .reg-box{
-    display: block;
+    display: none;
 }
