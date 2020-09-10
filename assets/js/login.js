@@ -36,9 +36,10 @@ $(function () {
         })
     })
     $('#form_login').submit(function () {
+        e.preventDefault()
         $.ajax({
             method: 'POST',
-            url: 'http://ajax.frontend.itheima.net/api/reguser',
+            url: 'http://ajax.frontend.itheima.net/api/login',
             data: $(this).serialize(),
             success: function (res) {
                 if (res.status !== 0) {
@@ -48,7 +49,7 @@ $(function () {
                 // 将登录成功得到的 token 字符串，保存到 localStorage 中
                 localStorage.setItem('token', res.token)
                 // 跳转到后台主页
-                location.href = '/index.html'
+                // location.href = '/index.html'
             }
         })
     })
