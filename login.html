@@ -19,7 +19,7 @@
         <div class="title-box"></div>
         <!-- 登录的 -->
         <div class="login-box">
-            <form class="layui-form" action="">
+            <form class="layui-form" id="form_login">
                 <div class="layui-form-item">
                     <i class="layui-icon layui-icon-username"></i>
                     <input type="text" name="title" required lay-verify="required" placeholder="请输入用户名"
@@ -40,7 +40,7 @@
         </div>
         <!-- 注册的 -->
         <div class="reg-box">
-            <form class="layui-form" action="">
+            <form class="layui-form" id="form_reg">
                 <div class="layui-form-item">
                     <i class="layui-icon layui-icon-username"></i>
                     <input type="text" name="title" required lay-verify="required" placeholder="请输入用户名"
@@ -70,6 +70,7 @@
     <script src="/assets/lib/layui/layui.all.js"></script>
     <!-- 引入jquery -->
     <script src="/assets/lib/jquery.js"></script>
+    <script src="/assets/js/baseApi.js"></script>
     <!-- 引入自己的login的js -->
     <script src="/assets/js/login.js"></script>
 </body>
