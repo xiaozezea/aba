@@ -37,10 +37,14 @@ $(function () {
     })
     $('#form_login').submit(function (e) {
         e.preventDefault()
+        var data = {
+            username: $('#form_login [name=username]').val(),
+            password: $('#form_login [name=password]').val()
+        }
         $.ajax({
             method: 'POST',
             url: '/api/login',
-            data: $(this).serialize(),
+            data,
             success: function (res) {
                 if (res.status == 0) {
                     layer.msg('登录成功！')
@@ -48,8 +52,10 @@ $(function () {
                     localStorage.setItem('token', res.token)
                     // 跳转到后台主页
                     location.href = '/index.html'
+                } else {
+                    layer.msg('登录失败！')
                 }
-                layer.msg('登录失败！')
+
             }
         })
     })
