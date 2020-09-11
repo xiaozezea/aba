@@ -13,7 +13,13 @@ function grtUserInfo() {
                 return layui.layer.msg('失败')
             }
             renderAvatar(res.data)
-        }
+        },
+        // complete: function () {
+        //     if (res.responseJSON.status === 1 && res.responseJSON.message === '身份认证失败！') {
+        //         localStorage.removeItem('token')
+        //     }
+        //     location.href='/login.html'
+        // }
     })
 }
 function renderAvatar(user) {
@@ -28,3 +34,11 @@ function renderAvatar(user) {
         $('.text-avatar').html(first).show()
     }
 }
+var layer = layui.layer
+$('#btnLogout').on('click', function () {
+    layer.confirm('确定退出登录?', { icon: 3, title: '提示' }, function () {
+        localStorage.removeItem('token')
+        location.href = '/login.html'
+        layer.close(index)
+    })
+})

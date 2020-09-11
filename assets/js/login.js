@@ -24,10 +24,10 @@ $(function () {
     $('#form_reg').on('submit', function (e) {
         e.preventDefault()
         var data = {
-            username: $('#form_reg [name=title]').val(),
+            username: $('#form_reg [name=username]').val(),
             password: $('#form_reg [name=password]').val()
         }
-        $.post('http://ajax.frontend.itheima.net/api/reguser', data, function (res) {
+        $.post('/api/reguser', data, function (res) {
             if (res.status !== 0) {
                 return layer.msg(res.message)
             }
@@ -39,17 +39,17 @@ $(function () {
         e.preventDefault()
         $.ajax({
             method: 'POST',
-            url: 'http://ajax.frontend.itheima.net/api/login',
+            url: '/api/login',
             data: $(this).serialize(),
             success: function (res) {
-                if (res.status !== 0) {
-                    return layer.msg('登录失败！')
+                if (res.status == 0) {
+                    layer.msg('登录成功！')
+                    // 将登录成功得到的 token 字符串，保存到 localStorage 中
+                    localStorage.setItem('token', res.token)
+                    // 跳转到后台主页
+                    location.href = '/index.html'
                 }
-                layer.msg('登录成功！')
-                // 将登录成功得到的 token 字符串，保存到 localStorage 中
-                localStorage.setItem('token', res.token)
-                // 跳转到后台主页
-                location.href = '/index.html'
+                layer.msg('登录失败！')
             }
         })
     })
