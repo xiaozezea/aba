@@ -55,7 +55,6 @@ $(function () {
                 } else {
                     layer.msg('登录失败！')
                 }
-
             }
         })
     })
